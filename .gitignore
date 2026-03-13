@@ -1,0 +1,33 @@
+# Gradle build outputs
+build/
+**/build/
+
+# CMake/NDK build cache
+.cxx/
+**/.cxx/
+
+# Gradle wrapper cache
+.gradle/
+**/.gradle/
+
+# Local configuration (not for version control)
+local.properties
+**/local.properties
+
+# Android Studio / IntelliJ IDEA
+*.iml
+.idea/
+**/.idea/
+
+# Generated APKs/AABs
+*.apk
+*.aab
+
+# Keystore files (never commit these)
+*.jks
+*.keystore
+
+# Python bytecode (night_vision)
+__pycache__/
+*.pyc
+*.pyo

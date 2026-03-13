@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    USB device filter for the Infiray P2 Pro thermal camera and its clones.
+
+    VID 0x0bda = Realtek Semiconductor Corp.
+    PID 0x5830 = Infiray P2 Pro
+    PID 0x5840 = Habotest HT820 (Infiray P2 clone)
+-->
+<resources>
+    <usb-device vendor-id="3034" product-id="22576" />  <!-- 0x0bda:0x5830 Infiray P2 Pro -->
+    <usb-device vendor-id="3034" product-id="22592" />  <!-- 0x0bda:0x5840 Habotest HT820  -->
+</resources>
