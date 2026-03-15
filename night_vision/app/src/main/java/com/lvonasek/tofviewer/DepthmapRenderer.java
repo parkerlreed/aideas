@@ -66,6 +66,7 @@ class DepthmapRenderer implements ImageReader.OnImageAvailableListener {
   private boolean frameProcessing = false;
   private FloatBuffer verticesBuffer = null;
 
+  private final Object mCameraLock = new Object();
   private ImageReader mImageReader;
   private CameraDevice mCameraDevice;
   private float[] mAngles;
@@ -190,7 +191,7 @@ class DepthmapRenderer implements ImageReader.OnImageAvailableListener {
   // CPU image reader callback.
   @Override
   public void onImageAvailable(ImageReader imageReader) {
-    synchronized (mCameraDevice) {
+    synchronized (mCameraLock) {
       if (frameProcessing) {
         return;
       }
@@ -199,7 +200,7 @@ class DepthmapRenderer implements ImageReader.OnImageAvailableListener {
 
     Image image = imageReader.acquireLatestImage();
     if (image == null) {
-      synchronized (mCameraDevice) {
+      synchronized (mCameraLock) {
         frameProcessing = false;
       }
       return;
@@ -280,7 +281,7 @@ class DepthmapRenderer implements ImageReader.OnImageAvailableListener {
       verticesBuffer.put(array);
       verticesBuffer.position(0);
 
-      synchronized (mCameraDevice) {
+      synchronized (mCameraLock) {
         frameProcessing = false;
       }
     }

@@ -365,13 +365,12 @@ public class TofViewerActivity extends GvrActivity implements GLESSurfaceView.Re
 
   @Override
   protected void onPause() {
-    if (initialized && !isChangingConfigurations()) {
+    if (!isChangingConfigurations()) {
       depthServer.stop();
       if (recordNight) {
         cancelRecordingNight();
       } else {
         depthmapRenderer.closeCamera();
-        System.exit(0);
       }
     }
     super.onPause();
@@ -390,22 +389,16 @@ public class TofViewerActivity extends GvrActivity implements GLESSurfaceView.Re
     if (!initialized) {
       mSurfaceView.setVisibility(View.VISIBLE);
       mGVRview.setVisibility(View.VISIBLE);
-
       depthmapRenderer.initCamera(this);
-      depthmapRenderer.openCamera(this);
       initialized = true;
     }
+    depthmapRenderer.openCamera(this);
   }
 
   @Override
   public void onBackPressed() {
+    if (recordNight) cancelRecordingNight();
     super.onBackPressed();
-    if (recordNight) {
-      cancelRecordingNight();
-    } else {
-      depthmapRenderer.closeCamera();
-      System.exit(0);
-    }
   }
 
   private void captureBitmap() {
