@@ -7,4 +7,4 @@ night_vision - Based on https://github.com/lvonasek/3DLiveScanner/tree/main/nigh
 
 gps - Frida scripts to hook and print RAW NMEA to termainl/pty. Run the python script alone for terminal. Pass in --pty to create /tmp/gps0 to use with gpsd. Regular is for Samsung. Motorola included separately.
 
-meta_quest_webcam - Frida hook to fix Meta intentionally blocking USB webcam access. Needs a rooted headset with frida-server running (Tested with Singularity)
+meta_quest_webcam - Fix for Meta intentionally blocking USB webcam access. Two forms of the same one-line patch: a Frida hook for quick testing (needs a rooted headset with frida-server running, tested with Singularity), and meta_quest_webcam/lsposed, an LSPosed module that makes it permanent - no adb tether, no daemon, survives reboot.
